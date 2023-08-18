@@ -1,0 +1,144 @@
+{
+    
+    "trans_col_file": {
+        "jira_id": "TRA-3739",
+        "filename_template": "BDP_TRANS_ACC_COL_DETAILS_{{ JIRA_ID }}.csv",
+            "columns": [
+                "JIRA_ID",
+                "TGT_DB_NAME",
+                "TGT_TABLE_NAME",
+                "COL_SEQ_ID",
+                "TGT_COL_NAME",
+                "TGT_COL_DTYPE",
+                "TGT_COL_LENGTH",
+                "TGT_PARTITION_COL",
+                "TGT_COL_DESC",
+                "STATUS",
+                "IS_COL_PII"
+            ],
+            "environments":[
+                "dev11",
+                "sit11",
+                "prd",
+                "ppt"
+            ],
+            "tgt_db_names": [
+                "dp_gc_cnsm_anlt"
+            ],
+            "sfmc_subs_dlay": {
+                "1": ["subs_id", "Decimal", 18, null, "Subscriber Identifier", "A", null],
+                "2": ["serv_id", "String", 40, null, "Service Identifier", "A", null],
+                "3": ["subs_stts_id", "String", 10, null, "Subscriber Status Identifier", "A", null],
+                "4": ["cust_id", "Decimal", 18, null, "Customer Identifier", "A", null],
+                "5": ["acct_id", "Decimal", 18, null, "Account Identifier", "A", null],
+                "6": ["bcc_ctct_id", "Integer", 18, null, "BCC Contact ID", "A", null],
+                "7": ["prty_id", "String", 10, null, "Party Identifier", "A", null],
+                "8": ["anlt", "String", 40, null, "Analytics ID", "A", null],
+                "9": ["open_dt", "Integer", 18, null, "open dt", "A", null],
+                "10": ["xpir_dt", "Integer", 18, null, "xpir dt", "A", null],
+                "11": ["ecf_xpir_dt", "String", 40, "Y", "partition ecf_xpir_dt", "A", null]
+            },
+            "sfmc_ctct_day": {
+                "1": ["ctct_id", "String", 40, null, "Contact Identifier", "A", null],
+                "2": ["prty_id", "String", 10, null, "Party Identifier", "A", null],
+                "3": ["eml_id", "String", 40, null, "Email Identifier", "A", null],
+                "4": ["eml_sid", "String", 40, null, "Hashed Email Identifier", "A", null],
+                "5": ["phn_no", "String", 40, null, "Phone Number", "A", null],
+                "6": ["mobl_no", "String", 40, null, "Mobile Number", "A", null],
+                "7": ["frst_nm", "String", 40, null, "First Name", "A", null],
+                "8": ["mid_nm", "String", 40, null, "Middle Name", "A", null],
+                "9": ["last_nm", "String", 40, null, "Last Name", "A", null],
+                "10": ["pref_nm", "String", 40, null, "Preferred Name", "A", null],
+                "11": ["eml_stts_cd", "String", 40, null, "Email Status Code", "A", null],
+                "12": ["pref_ctct_mode_flg", "String", 40, null, "Preferred Contact Mode", "A", null],
+                "13": ["ctct_gnaf_id", "String", 40, null, "Contact GNAF ID", "A", null],
+                "14": ["post_cd", "String", 40, null, "Post Code", "A", null],
+                "15": ["eml_note_flg", "String", 40, null, "Email Notification Flag", "A", null],
+                "16": ["sms_note_flg", "String", 40, null, "SMS Notification Flag", "A", null],
+                "17": ["actv_serv_flg", "String", 40, null, "Active Serv Flag", "A", null],
+                "18": ["open_dt", "Integer", 18, null, "open dt", "A", null],
+                "19": ["xpir_dt", "Integer", 18, null, "xpir dt", "A", null],
+                "20": ["ecf_xpir_dt", "String", 40, "Y", "partition ecf_xpir_dt", "A", null]
+            }
+    },
+    "trans_table_file": {
+        "jira_id": "TRA-3739",
+        "hdfs_folder":"c360_sfmc",
+        "filename_template": "BDP_TRANS_ACC_TABLE_DETAILS_{{ JIRA_ID }}.csv",
+            "columns": [
+                "JIRA_ID",
+                "TGT_DB_NAME",
+                "TGT_TABLE_NAME",
+                "TGT_TABLE_FORMAT",
+                "TGT_TABLE_HDFS_LOC",
+                "TGT_TABLE_COMMENT",
+                "SRC_TABLE_PKEY",
+                "SRC_TABLE_CDC",
+                "STATUS"
+            ],
+            "environments":[
+                "dev11",
+                "sit11",
+                "prd",
+                "ppt"
+            ],
+            "tgt_db_names": [
+                "dp_gc_cnsm_anlt",
+                "dp_gc_cnsm_xtrc"
+            ],
+            "sfmc_subs_day": [
+                "parquet", "/data/{{ environment }}/consumption/anlt/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Subs Daily","N/A","N/A", "A"
+            ],
+            "sfmc_ctct_day": [
+                "parquet", "/data/{{ environment }}/consumption/anlt/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Contact Daily","N/A","N/A", "A"
+            ],
+            "sfmc_prty_day": [
+                "parquet", "/data/{{ environment }}/consumption/anlt/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Party Daily","N/A","N/A", "A"
+            ],
+            "sfmc_subs_dly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Subs Daily","N/A","N/A", "A"
+            ],
+            "sfmc_ctct_dly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Contact Daily","N/A","N/A", "A"
+            ],                           
+            "sfmc_prty_dly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Party Daily","N/A","N/A", "A"
+            ],
+            "sfmc_subs_wkly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Subs Weekly","N/A","N/A", "A"
+            ],
+            "sfmc_ctct_wkly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Contact Weekly","N/A","N/A", "A"
+            ],
+            "sfmc_prty_wkly": [
+                "parquet", "/data/{{ environment }}/consumption/xtrc/gnrl/gc/{{ hdfs_folder }}/{{ TGT_TABLE_NAME }}", "Party Weekly","N/A","N/A", "A"
+            ]
+            
+    },
+    "trans_view_file":{
+        "jira_id": "TRA-3739",
+        "filename_template": "BDP_TRANS_ACC_VIEW_DETAILS_{{ JIRA_ID }}.csv",
+        "columns": [
+            "JIRA_ID",
+            "SRC_DB_NAME",
+            "SRC_TABLE_NAME",
+            "TGT_DB_NAME",
+            "TGT_VIEW_NAME",
+            "STATUS"
+        ],
+        "environments":[
+            "dev11",
+            "sit11",
+            "prd",
+            "ppt"
+        ],
+        "sfmc_subs_day":{
+            "src_db_name":"dp_dds",
+            "src_table_name":"subs",
+            "tgt_db_name":"dp_gc_cnsm_anlt",
+            "status":"A"
+        }    
+    }
+   
+    
+}
